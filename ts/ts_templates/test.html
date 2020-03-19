@@ -1,0 +1,28 @@
+{#html+data#}
+{% extends 'layout.html' %}
+
+{#   模板块#}
+{% block content %}
+{#   继承#}
+    {{ super() }}
+    {{ data.user }}
+    {{ data.signature }}
+    {% if data.age == 18 %}
+        <div>{{data['age']}}</div>
+    {% endif %}
+    {% if data.grade >= 12 %}
+{#        过滤器#}
+{#       管道命令#}
+        <div>{{ data.school | default(data.class) | default("不存在'school'属性值") }}</div>
+        <div>{{ data.school | default('',true) }}</div>
+    {% endif %}
+    {% for item in data.items() %}
+        <div>{{ item }}</div>
+    {% endfor %}
+    {{ data | length() }}
+    {% set messages = get_flashed_messages(category_filter=['public']) %}
+        <div>{{ messages }}</div>
+    {% with messages = get_flashed_messages() %}
+        <div>{{ messages }}</div>
+    {% endwith %}
+{% endblock %}

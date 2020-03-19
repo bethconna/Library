@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+{#    通过endpoint反向构建url：url_for()函数#}
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'test.css') }}">
+</head>
+<body>
+{#   jinja2#}
+    {% block head %}
+        <div>this is a head</div>
+    {% endblock %}
+    {% block content %}
+        <div>this is a content</div>
+    {% endblock %}
+    {% block foot %}
+        <div>this is a foot</div>
+    {% endblock %}
+</body>
+</html>
